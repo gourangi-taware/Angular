@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Dish } from '../shared/dish';
-import { DISHES } from '../shared/dishes';
+import { DishService } from '../services/dish.service';
 
 @Component({
   selector: 'app-menu',
@@ -8,12 +8,13 @@ import { DISHES } from '../shared/dishes';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
-  dishes: Dish[] = DISHES;
+  dishes: Dish[] ;   //local variable
 
   selectedDish : Dish;
-  constructor() { }
+  constructor( private DishService : DishService) { }  //does the work of getting data from server or file to the required component
 
   ngOnInit(): void {
+    this.dishes=this.DishService.getDishes(); //stores the data into local variable dishes
   }
 
   onSelect(dish :Dish) {
