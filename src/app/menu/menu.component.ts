@@ -9,8 +9,8 @@ import { DishService } from '../services/dish.service';
 })
 export class MenuComponent implements OnInit {
   dishes: Dish[] ;   //local variable
+  selectedDish : Dish; //variable
 
-  selectedDish : Dish;
   constructor( private DishService : DishService) { }  //does the work of getting data from server or file to the required component
 
   ngOnInit(): void {
@@ -20,4 +20,6 @@ export class MenuComponent implements OnInit {
   onSelect(dish :Dish) {
     this.selectedDish = dish;
   }
+
+  
 }
