@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.dish=this.DishService.getFeaturedDish();
     this.promotion=this.PromotionService.getFeaturedPromotion(); //stores the data into local variable dishes
-    this.leader=this.LeaderService.getFeaturedDish();
+    this.leader=this.LeaderService.getFeaturedLeader();
   }
 
 }
