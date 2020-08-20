@@ -13,9 +13,12 @@ export class MenuComponent implements OnInit {
 
   constructor( private DishService : DishService) { }  //does the work of getting data from server or file to the required component
 
-  ngOnInit(): void {
-    this.dishes=this.DishService.getDishes(); //stores the data into local variable dishes
+  ngOnInit(){
+   this.DishService.getDishes() //calling the service
+    //.then(dishes => this.dishes = dishes);       //use .this for promises
+    .subscribe(dishes => this.dishes = dishes);     //use .subscribe for observables
   }
+
 
   onSelect(dish :Dish) {
     this.selectedDish = dish;
