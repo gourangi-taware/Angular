@@ -51,6 +51,40 @@
         <div flex [hidden]="dish">
           <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
         </div>
-  </div>
 
+        
+          <h1>Send us your Feedback</h1>
+          <p>{{ feedbackForm.value | json }} {{ feedbackForm.status | json }}</p>
+      
+          <form novalidate [formGroup]="feedbackForm" #fform="ngForm" (ngSubmit)="onSubmit()">
+            <div>
+              <mat-form-field class="full-width">
+                <input matInput formControlName="author" placeholder="Name" type="text" required>
+                <mat-error *ngIf="formErrors.author">{{formErrors.author}}</mat-error>
+              </mat-form-field>
+              <p>
+                <mat-slider
+                thumbLabel
+                [displayWith]="formatLabel"
+                tickInterval="1"
+                min="1"
+                max="5"></mat-slider>
+                
+              </p>
+            </div>
+            
+            
+            <p>
+              <mat-form-field class="full-width">
+                <textarea matInput formControlName="comment" placeholder="Your Feedback" rows=3  required></textarea>
+                <mat-error *ngIf="formErrors.comment">{{formErrors.comment}}</mat-error>
+              </mat-form-field>
+            </p>
+            <button type="submit"  mat-button class="background-primary text-floral-white" [disabled]="!feedbackForm.valid" (click)="onSubmit()">Submit</button>
+          </form>
+        
+        
+  </div>
+  
 </div>
+
